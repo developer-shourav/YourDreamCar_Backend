@@ -30,9 +30,9 @@ const addNewCar = async (req: Request, res: Response) => {
         success: false,
         error: {
           name: 'ValidationError',
-          errors:  err.errors,
+          errors: err.errors,
         },
-        stack: err.stack, 
+        stack: err.stack,
       });
     } else {
       /* ----------Handle other errors (e.g., DB errors, etc.) ---------- */
@@ -47,7 +47,7 @@ const addNewCar = async (req: Request, res: Response) => {
           name: errorName,
           details: err,
         },
-        stack: err.stack, 
+        stack: err.stack,
       });
     }
   }

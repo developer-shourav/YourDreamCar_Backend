@@ -5,6 +5,4 @@ const router = express.Router();
 /* -------Create a Car */
 router.post('/', CarControllers.addNewCar);
 
-
-
 export const CarRoutes = router;

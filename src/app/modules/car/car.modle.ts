@@ -1,7 +1,7 @@
 import { model, Schema } from 'mongoose';
-import { TCar } from './car.interface';
+import { TCar, CarModel } from './car.interface';
 
-const carSchema = new Schema<TCar>(
+const carSchema = new Schema<TCar, CarModel>(
   {
     brand: {
       type: String,
@@ -46,8 +46,19 @@ const carSchema = new Schema<TCar>(
   },
   {
     timestamps: true,
-    versionKey: false
+    versionKey: false,
   },
 );
 
-export const Car = model<TCar>('Car', carSchema);
+// Find it the card existing or not ------
+carSchema.statics.isCarExists = async function (
+  brand: string,
+  model: string,
+  year: number,
+  category: string,
+) {
+  const existingCar = await Car.findOne({ brand, model, year, category });
+  return existingCar;
+};
+
+export const Car = model<TCar, CarModel>('Car', carSchema);

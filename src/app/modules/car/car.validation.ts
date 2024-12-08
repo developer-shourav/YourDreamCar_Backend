@@ -8,8 +8,6 @@ export const carValidationSchema = z.object({
   price: z.number().min(0, 'Price must be a positive number'), // Price is non-negative
   category: z.enum(['Sedan', 'SUV', 'Truck', 'Coupe', 'Convertible']),
   description: z.string(),
-  quantity: z
-    .number()
-    .min(1, 'Quantity must be at least 1'), // Quantity is a whole number and non-negative
+  quantity: z.number().min(1, 'Quantity must be at least 1'), // Quantity is a whole number and non-negative
   inStock: z.boolean(),
 });

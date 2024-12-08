@@ -1,3 +1,5 @@
+import { Model } from 'mongoose';
+
 export type TCarCategory = 'Sedan' | 'SUV' | 'Truck' | 'Coupe' | 'Convertible';
 
 export type TCar = {
@@ -10,3 +12,12 @@ export type TCar = {
   quantity: number;
   inStock: boolean;
 };
+
+export interface CarModel extends Model<TCar> {
+  isCarExists(
+    brand: string,
+    model: string,
+    year: number,
+    category: string,
+  ): Promise<TCar | null>;
+}

@@ -24,6 +24,7 @@ const orderSchema = new Schema<TOrder>(
   },
   {
     timestamps: true,
+    versionKey: false
   },
 );
 

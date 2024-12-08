@@ -5,6 +5,7 @@ const orderSchema = new Schema<TOrder>(
   {
     email: {
       type: String,
+      trim: true,
       required: true,
     },
     car: {
@@ -15,12 +16,10 @@ const orderSchema = new Schema<TOrder>(
     quantity: {
       type: Number,
       required: true,
-      min: [1, 'Quantity must be at least 1.'],
     },
     totalPrice: {
       type: Number,
       required: true,
-      min: [1, 'Total price must be more than 0.'],
     },
   },
   {

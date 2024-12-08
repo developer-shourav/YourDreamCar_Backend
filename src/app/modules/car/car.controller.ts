@@ -53,4 +53,26 @@ const addNewCar = async (req: Request, res: Response) => {
   }
 };
 
-export const CarControllers = { addNewCar };
+/* -----------------Get All Cars------------------------- */
+const getAllCars = async (req: Request, res: Response) => {
+  try {
+    const result = await carServices.getAllCarsFromDB();
+
+    /* ----Send success response to frontend ------ */
+    res.status(200).json({
+      message: 'Cars retrieved successfully',
+      success: true,
+      data: result,
+    });
+  } catch (err: any) {
+    // ------ If error occurs then give error response to the Fronted
+    res.status(500).json({
+      message: err.message || 'Something went wrong!',
+      success: false,
+      error: err,
+      stack: err.stack,
+    });
+  }
+};
+
+export const CarControllers = { addNewCar, getAllCars };

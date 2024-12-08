@@ -17,10 +17,20 @@ const addNewCarIntoDB = async (carData: TCar) => {
   const result = await Car.create(carData);
   return result;
 };
-
+/* --------------Logic For get all cars form Database --------- */
 const getAllCarsFromDB = async () => {
   const result = await Car.find();
   return result;
 };
 
-export const carServices = { addNewCarIntoDB, getAllCarsFromDB };
+/* --------------Logic For get single car form Database --------- */
+const getSingleCarFromDB = async (carId: string) => {
+  const result = await Car.findOne({ _id: carId });
+  return result;
+};
+
+export const carServices = {
+  addNewCarIntoDB,
+  getAllCarsFromDB,
+  getSingleCarFromDB,
+};

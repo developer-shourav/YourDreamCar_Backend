@@ -8,5 +8,6 @@ router.post('/', CarControllers.addNewCar);
 /* -------Get All Cars */
 router.get('/', CarControllers.getAllCars);
 
-
+/* -------Get Single Car */
+router.get('/:carId', CarControllers.getSingleCar);
 export const CarRoutes = router;

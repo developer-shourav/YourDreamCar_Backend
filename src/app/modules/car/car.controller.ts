@@ -78,7 +78,7 @@ const getAllCars = async (req: Request, res: Response) => {
 /* -----------------Get single Car------------------------- */
 const getSingleCar = async (req: Request, res: Response) => {
   try {
-    const {carId} = req.params; 
+    const { carId } = req.params;
     const result = await carServices.getSingleCarFromDB(carId);
 
     /* ----Send success response to frontend ------ */
@@ -98,4 +98,32 @@ const getSingleCar = async (req: Request, res: Response) => {
   }
 };
 
-export const CarControllers = { addNewCar, getAllCars, getSingleCar };
+/* -----------------Delete single Car------------------------- */
+const deleteSingleCar = async (req: Request, res: Response) => {
+  try {
+    const { carId } = req.params;
+    await carServices.deleteSingleCarFromDB(carId);
+
+    /* ----Send success response to frontend ------ */
+    res.status(200).json({
+      message: 'Car deleted successfully',
+      success: true,
+      data: {},
+    });
+  } catch (err: any) {
+    // ------ If error occurs then give error response to the Fronted
+    res.status(500).json({
+      message: err.message || 'Something went wrong!',
+      success: false,
+      error: err,
+      stack: err.stack,
+    });
+  }
+};
+
+export const CarControllers = {
+  addNewCar,
+  getAllCars,
+  getSingleCar,
+  deleteSingleCar,
+};

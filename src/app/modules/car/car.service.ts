@@ -29,8 +29,15 @@ const getSingleCarFromDB = async (carId: string) => {
   return result;
 };
 
+/* --------------Logic For get single car form Database --------- */
+const deleteSingleCarFromDB = async (carId: string) => {
+  const result = await Car.deleteOne({ _id: carId });
+  return result;
+};
+
 export const carServices = {
   addNewCarIntoDB,
   getAllCarsFromDB,
   getSingleCarFromDB,
+  deleteSingleCarFromDB
 };

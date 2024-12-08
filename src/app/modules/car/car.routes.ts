@@ -10,4 +10,8 @@ router.get('/', CarControllers.getAllCars);
 
 /* -------Get Single Car */
 router.get('/:carId', CarControllers.getSingleCar);
+
+/* -------Delete A Car */
+router.delete('/:carId', CarControllers.deleteSingleCar);
+
 export const CarRoutes = router;

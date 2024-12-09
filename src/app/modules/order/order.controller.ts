@@ -12,7 +12,7 @@ const createAnOrder = async (req: Request, res: Response) => {
     // ---------Convert car to ObjectId
     const parsedOrderData = {
       ...orderData,
-      car: new Types.ObjectId(orderData.car), 
+      car: new Types.ObjectId(orderData.car),
     };
 
     // ---------Create a new order
@@ -31,6 +31,7 @@ const createAnOrder = async (req: Request, res: Response) => {
         message: 'Validation failed',
         success: false,
         error: err.errors,
+        stack: err.stack,
       });
     } else {
       // Handle other errors
@@ -38,6 +39,7 @@ const createAnOrder = async (req: Request, res: Response) => {
         message: err.message || 'Something went wrong!',
         success: false,
         error: err,
+        stack: err.stack,
       });
     }
   }
@@ -56,15 +58,38 @@ const getRevenue = async (req: Request, res: Response) => {
       data: { totalRevenue },
     });
   } catch (err: any) {
-    // ------ Send Error response 
+    // ------ Send Error response
     res.status(500).json({
       message: err.message || 'Something went wrong!',
       success: false,
       error: err,
+      stack: err.stack,
+    });
+  }
+};
+
+const getAllOrders = async (req: Request, res: Response) => {
+  try {
+    const result = await OrderServices.getAllOrdersFromDB();
+
+    /* ----Send success response to frontend ------ */
+    res.status(200).json({
+      message: 'Orders retrieved successfully',
+      status: true,
+      data: result,
+    });
+  } catch (err: any) {
+    // ------ If error occurs then give error response to the Fronted
+    res.status(500).json({
+      message: err.message || 'Something went wrong!',
+      success: false,
+      error: err,
+      stack: err.stack,
     });
   }
 };
 export const OrderControllers = {
   createAnOrder,
-  getRevenue
+  getRevenue,
+  getAllOrders,
 };

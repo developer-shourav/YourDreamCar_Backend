@@ -11,28 +11,32 @@ const createNewOrder = async (orderData: TOrder) => {
   }
 
   //----------- Check if sufficient quantity is available
-  if (car.quantity === 0 || car.inStock === false ||  car.quantity < orderData.quantity) {
+  if (
+    car.quantity === 0 ||
+    car.inStock === false ||
+    car.quantity < orderData.quantity
+  ) {
     throw new Error('Insufficient stock available!');
   }
 
-   //----------- Calculate the total price
-   const totalPrice = car.price * orderData.quantity;
+  //----------- Calculate the total price
+  const totalPrice = car.price * orderData.quantity;
 
-   //----------- Check if User Given Price is correct or not 
+  //----------- Check if User Given Price is correct or not
   if (totalPrice !== orderData.totalPrice) {
     throw new Error('Your added price is not equal to car actual price!');
   }
 
-   //----------- Update the car's inventory
-   car.quantity -= orderData.quantity;
-   if (car.quantity === 0) {
-     car.inStock = false;
-   }
-   await car.save();
- 
-   //----------- Create a new order
-   const newOrder = await Order.create(orderData);
-   return newOrder;
+  //----------- Update the car's inventory
+  car.quantity -= orderData.quantity;
+  if (car.quantity === 0) {
+    car.inStock = false;
+  }
+  await car.save();
+
+  //----------- Create a new order
+  const newOrder = await Order.create(orderData);
+  return newOrder;
 };
 
 /* ---------- Calculate Revenue from Orders  ---------- */
@@ -49,4 +53,15 @@ const calculateTotalRevenue = async () => {
   return result[0]?.totalRevenue || 0; // Default to 0 if no orders
 };
 
-export const OrderServices = { createNewOrder, calculateTotalRevenue };
+/* ---------- Calculate Revenue from Orders  ---------- */
+
+const getAllOrdersFromDB = async () => {
+  const result = await Order.find();
+  return result;
+};
+
+export const OrderServices = {
+  createNewOrder,
+  calculateTotalRevenue,
+  getAllOrdersFromDB,
+};

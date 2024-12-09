@@ -35,7 +35,18 @@ const createNewOrder = async (orderData: TOrder) => {
    return newOrder;
 };
 
+/* ---------- Calculate Revenue from Orders  ---------- */
+const calculateTotalRevenue = async () => {
+  const result = await Order.aggregate([
+    {
+      $group: {
+        _id: null,
+        totalRevenue: { $sum: '$totalPrice' }, // Sum up all `totalPrice` values
+      },
+    },
+  ]);
 
+  return result[0]?.totalRevenue || 0; // Default to 0 if no orders
+};
 
-
-export const OrderServices = { createNewOrder };
+export const OrderServices = { createNewOrder, calculateTotalRevenue };

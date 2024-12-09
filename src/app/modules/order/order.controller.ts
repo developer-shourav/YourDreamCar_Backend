@@ -19,7 +19,7 @@ const createAnOrder = async (req: Request, res: Response) => {
     const result = await OrderServices.createNewOrder(parsedOrderData);
 
     // Send a success response
-    res.status(201).json({
+    res.status(200).json({
       message: 'Order created successfully',
       status: true,
       data: result,
@@ -68,6 +68,7 @@ const getRevenue = async (req: Request, res: Response) => {
   }
 };
 
+/* ------------------- Get All Orders ------------------- */
 const getAllOrders = async (req: Request, res: Response) => {
   try {
     const result = await OrderServices.getAllOrdersFromDB();
@@ -88,8 +89,34 @@ const getAllOrders = async (req: Request, res: Response) => {
     });
   }
 };
+
+/* ------------------- Delete an order ------------------- */
+const deleteAnOrder = async (req: Request, res: Response) => {
+  try {
+    const { orderId } = req.params;
+    await OrderServices.deleteAnOrderFromDB(orderId);
+
+    /* ----Send success response to frontend ------ */
+    res.status(200).json({
+      message: 'Order deleted successfully',
+      status: true,
+      data: {},
+    });
+  } catch (err: any) {
+    // ------ If error occurs then give error response to the Fronted
+    res.status(err.message === 'Order not found!' ? 404 : 500).json({
+      message: err.message || 'Something went wrong!',
+      success: false,
+      error: err,
+      stack: err.stack,
+    });
+  }
+};
+
+
 export const OrderControllers = {
   createAnOrder,
   getRevenue,
   getAllOrders,
+  deleteAnOrder,
 };

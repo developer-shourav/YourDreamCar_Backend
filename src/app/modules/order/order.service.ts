@@ -54,9 +54,18 @@ const calculateTotalRevenue = async () => {
 };
 
 /* ---------- Calculate Revenue from Orders  ---------- */
-
 const getAllOrdersFromDB = async () => {
   const result = await Order.find();
+  return result;
+};
+
+/* ---------- Delete an Order from Database  ---------- */
+const deleteAnOrderFromDB = async (orderId: string) => {
+  const result = await Order.findByIdAndDelete({ _id: orderId });
+  if (!result) {
+    throw new Error('Order not found!');
+  }
+
   return result;
 };
 
@@ -64,4 +73,5 @@ export const OrderServices = {
   createNewOrder,
   calculateTotalRevenue,
   getAllOrdersFromDB,
+  deleteAnOrderFromDB,
 };

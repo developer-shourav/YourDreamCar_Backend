@@ -10,7 +10,7 @@ router.post('/', OrderControllers.createAnOrder);
 router.get('/revenue', OrderControllers.getRevenue);
 
 /* -------Get all orders */
-router.get('/allOrders', OrderControllers.getAllOrders);
+router.get('/', OrderControllers.getAllOrders);
 
 /* -------Get Single order */
 router.get('/:orderId', OrderControllers.getAnOrder);

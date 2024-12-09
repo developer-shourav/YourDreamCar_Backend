@@ -64,8 +64,11 @@ You can access the live application here: [https://2-your-dream-car-backend.verc
 ```bash
 npm install
 ```
+
 3. Set `.env` file into the root directory 
+
 ![env directory](./README-Img/env-img.png) <br/>
+
 You can get the env here: [Visit Here](https://docs.google.com/document/d/16SSu0_09Y8Ur1_6_xXQRDHXuJwx0j9UuFakO-wq8Gok/edit?usp=sharing)
 
 4. Start the development server
@@ -75,4 +78,4 @@ npm run start:dev
 
 ## How to Use the Application
 
-<a href='https://youtu.be/IbJMb-qsgaY?si=dN3xgHWmo66JzBVJ' target=_blank> <img src="./README-Img//watch-video-button-01.png" /></a>
+<a href='https://youtu.be/IbJMb-qsgaY?si=dN3xgHWmo66JzBVJ' target=_blank> <img width='350px' src="./README-Img//watch-video-button-01.png" /></a>

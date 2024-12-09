@@ -2,7 +2,7 @@ import { Car } from '../car/car.modle';
 import { TOrder } from './order.interface';
 import { Order } from './order.modle';
 
-/* ----------- Create a new order and manage inventory ----------- */
+/* ----------- Logic for Create a new order and manage inventory ----------- */
 const createNewOrder = async (orderData: TOrder) => {
   //----------- Find the car by its ID
   const car = await Car.findById(orderData.car);
@@ -39,7 +39,7 @@ const createNewOrder = async (orderData: TOrder) => {
   return newOrder;
 };
 
-/* ---------- Calculate Revenue from Orders  ---------- */
+/* ---------- Logic for Calculate Revenue from Orders  ---------- */
 const calculateTotalRevenue = async () => {
   const result = await Order.aggregate([
     {
@@ -53,13 +53,22 @@ const calculateTotalRevenue = async () => {
   return result[0]?.totalRevenue || 0; // Default to 0 if no orders
 };
 
-/* ---------- Calculate Revenue from Orders  ---------- */
+/* ---------- Logic for Get All orders From Database  ---------- */
 const getAllOrdersFromDB = async () => {
   const result = await Order.find();
   return result;
 };
 
-/* ---------- Delete an Order from Database  ---------- */
+/* ---------- Logic for Get An order From Database  ---------- */
+const getAnOrderFromDB = async (orderId: string) => {
+  const result = await Order.findOne({ _id: orderId });
+  if (!result) {
+    throw new Error('Order not found!');
+  }
+  return result;
+};
+
+/* ---------- Logic for Delete an Order from Database  ---------- */
 const deleteAnOrderFromDB = async (orderId: string) => {
   const result = await Order.findByIdAndDelete({ _id: orderId });
   if (!result) {
@@ -73,5 +82,6 @@ export const OrderServices = {
   createNewOrder,
   calculateTotalRevenue,
   getAllOrdersFromDB,
+  getAnOrderFromDB,
   deleteAnOrderFromDB,
 };

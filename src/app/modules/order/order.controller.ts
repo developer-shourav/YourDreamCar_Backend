@@ -90,6 +90,29 @@ const getAllOrders = async (req: Request, res: Response) => {
   }
 };
 
+/* ------------------- Get Single Order ------------------- */
+const getAnOrder = async (req: Request, res: Response) => {
+  try {
+    const { orderId } = req.params;
+    const result = await OrderServices.getAnOrderFromDB(orderId);
+
+    /* ----Send success response to frontend ------ */
+    res.status(200).json({
+      message: 'Order retrieved successfully',
+      status: true,
+      data: result,
+    });
+  } catch (err: any) {
+    // ------ If error occurs then give error response to the Fronted
+    res.status(err.message === 'Order not found!' ? 404 : 500).json({
+      message: err.message || 'Something went wrong!',
+      success: false,
+      error: err,
+      stack: err.stack,
+    });
+  }
+};
+
 /* ------------------- Delete an order ------------------- */
 const deleteAnOrder = async (req: Request, res: Response) => {
   try {
@@ -113,10 +136,10 @@ const deleteAnOrder = async (req: Request, res: Response) => {
   }
 };
 
-
 export const OrderControllers = {
   createAnOrder,
   getRevenue,
   getAllOrders,
+  getAnOrder,
   deleteAnOrder,
 };

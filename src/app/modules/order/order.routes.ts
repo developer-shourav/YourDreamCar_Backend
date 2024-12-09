@@ -12,7 +12,10 @@ router.get('/revenue', OrderControllers.getRevenue);
 /* -------Get all orders */
 router.get('/allOrders', OrderControllers.getAllOrders);
 
+/* -------Get Single order */
+router.get('/:orderId', OrderControllers.getAnOrder);
+
 /* -------Delete an order */
-router.delete('/deleteOrder/:orderId', OrderControllers.deleteAnOrder);
+router.delete('/:orderId', OrderControllers.deleteAnOrder);
 
 export const OrderRoutes = router;

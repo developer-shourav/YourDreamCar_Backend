@@ -26,18 +26,41 @@ const getAllCarsFromDB = async () => {
 /* --------------Logic For get single car form Database --------- */
 const getSingleCarFromDB = async (carId: string) => {
   const result = await Car.findOne({ _id: carId });
+  if (!result) {
+    throw new Error('Car not found!');
+  }
   return result;
+};
+
+/* -------------Logic for update a single car------------------ */
+const updateSingleCarFromDB = async (
+  carId: string,
+  carUpdates: Partial<TCar>,
+) => {
+  const updatedCar = await Car.findByIdAndUpdate(
+    carId,
+    carUpdates,
+    { new: true, runValidators: true }, // Return the updated document and apply validation
+  );
+  if (!updatedCar) {
+    throw new Error('Car not found!');
+  }
+  return updatedCar;
 };
 
 /* --------------Logic For get single car form Database --------- */
 const deleteSingleCarFromDB = async (carId: string) => {
-  const result = await Car.deleteOne({ _id: carId });
-  return result;
+  const deleteCar = await Car.findByIdAndDelete({ _id: carId });
+  if (!deleteCar) {
+    throw new Error('Car not found!');
+  }
+  return deleteCar;
 };
 
 export const carServices = {
   addNewCarIntoDB,
   getAllCarsFromDB,
   getSingleCarFromDB,
-  deleteSingleCarFromDB
+  updateSingleCarFromDB,
+  deleteSingleCarFromDB,
 };

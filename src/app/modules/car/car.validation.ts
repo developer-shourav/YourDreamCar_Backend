@@ -11,3 +11,6 @@ export const carValidationSchema = z.object({
   quantity: z.number().min(1, 'Quantity must be at least 1'), // Quantity is a whole number and non-negative
   inStock: z.boolean(),
 });
+
+// -------------For Update Data of car -----------
+export const carUpdateValidationSchema = carValidationSchema.partial();

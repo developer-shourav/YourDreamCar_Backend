@@ -1,5 +1,8 @@
 import { Request, Response } from 'express';
-import { carValidationSchema } from './car.validation';
+import {
+  carUpdateValidationSchema,
+  carValidationSchema,
+} from './car.validation';
 import { carServices } from './car.service';
 
 /* --------------------Add a new car ----------------- */
@@ -61,7 +64,7 @@ const getAllCars = async (req: Request, res: Response) => {
     /* ----Send success response to frontend ------ */
     res.status(200).json({
       message: 'Cars retrieved successfully',
-      success: true,
+      status: true,
       data: result,
     });
   } catch (err: any) {
@@ -84,17 +87,59 @@ const getSingleCar = async (req: Request, res: Response) => {
     /* ----Send success response to frontend ------ */
     res.status(200).json({
       message: 'Car retrieved successfully',
-      success: true,
+      status: true,
       data: result,
     });
   } catch (err: any) {
     // ------ If error occurs then give error response to the Fronted
-    res.status(500).json({
+    res.status(err.message === 'Car not found!' ? 404 : 500).json({
       message: err.message || 'Something went wrong!',
       success: false,
       error: err,
       stack: err.stack,
     });
+  }
+};
+
+/* -----------------Update A Car------------------------- */
+const updateACar = async (req: Request, res: Response) => {
+  try {
+    const { carId } = req.params;
+    const carUpdates = carUpdateValidationSchema.parse(req.body);
+
+    //----- Update the car in the database-----
+    const result = await carServices.updateSingleCarFromDB(carId, carUpdates);
+
+    /* ----Send success response to frontend ------ */
+    res.status(200).json({
+      message: 'Car updated successfully',
+      status: true,
+      data: result,
+    });
+  } catch (err: any) {
+    if (err.name === 'ZodError') {
+      /* ------ Handle validation errors ------*/
+      res.status(400).json({
+        message: 'Validation failed',
+        success: false,
+        error: err.errors,
+      });
+    } else {
+      /* ------Handle other errors (e.g., DB errors, etc.) ------ */
+      const errorName = err.name || 'InternalServerError';
+      const errorMessage =
+        err.message || 'An unexpected error occurred on the server.';
+
+      res.status(errorMessage === 'Car not found!' ? 404 : 500).json({
+        message: errorMessage,
+        success: false,
+        error: {
+          name: errorName,
+          details: err,
+        },
+        stack: err.stack,
+      });
+    }
   }
 };
 
@@ -107,12 +152,12 @@ const deleteSingleCar = async (req: Request, res: Response) => {
     /* ----Send success response to frontend ------ */
     res.status(200).json({
       message: 'Car deleted successfully',
-      success: true,
+      status: true,
       data: {},
     });
   } catch (err: any) {
     // ------ If error occurs then give error response to the Fronted
-    res.status(500).json({
+    res.status(err.message === 'Car not found!' ? 404 : 500).json({
       message: err.message || 'Something went wrong!',
       success: false,
       error: err,
@@ -125,5 +170,6 @@ export const CarControllers = {
   addNewCar,
   getAllCars,
   getSingleCar,
+  updateACar,
   deleteSingleCar,
 };

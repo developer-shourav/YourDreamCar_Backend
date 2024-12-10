@@ -18,7 +18,7 @@ You can access the live application here: [https://2-your-dream-car-backend.verc
 
 ## Introduction
 
-`YourDreamCar` is a backend project designed for seamless car buying and selling. Users can add cars by providing detailed information, view all listed cars, and perform updates or deletions as needed. Additionally, users can place orders for cars, see total orders, and view the platform's total revenue, ensuring an efficient  experience.
+`YourDreamCar` is a backend project designed for seamless car buying and selling. Users can add cars by providing detailed information, view all listed cars, and perform updates or deletions as needed. Additionally, users can place orders for cars, see total orders, and view the platform's total revenue, ensuring an efficient experience.
 
 ---
 
@@ -46,8 +46,8 @@ You can access the live application here: [https://2-your-dream-car-backend.verc
 
 ### Prerequisites
 
-- Node.js 
-- npm 
+- Node.js
+- npm
 - MongoDB (local or cloud instance)
 
 ### Installation
@@ -58,24 +58,35 @@ You can access the live application here: [https://2-your-dream-car-backend.verc
    git clone https://github.com/developer-shourav/YourDreamCar_Backend.git
    cd YourDreamCar_Backend
 ```
+
 ![Repo Cline Image](./README-Img/clone-repo.png)
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
-3. Set `.env` file into the root directory 
+3. Set `.env` file into the root directory
 
 ![env directory](./README-Img/env-img.png) <br/>
 
 You can get the env here: [Visit Here](https://docs.google.com/document/d/16SSu0_09Y8Ur1_6_xXQRDHXuJwx0j9UuFakO-wq8Gok/edit?usp=sharing)
 
 4. Start the development server
+
 ```cmd
 npm run start:dev
 ```
 
 ## How to Use the Application
 
-<a href='https://youtu.be/IbJMb-qsgaY?si=dN3xgHWmo66JzBVJ' target=_blank> <img width='350px' src="./README-Img//watch-video-button-01.png" /></a>
+1. Create a Car
+- Endpoint: `/api/cars`
+- Method: `POST`
+
+`Request:` ![Create A car Request](./README-Img/use/createCarReq.png) 
+
+`Response:` ![Create A car Response](./README-Img/use/createCarRes.png) 
+
+<a href='https://drive.google.com/file/d/1AcWz9tT3ehQerfPaZM-5T6Xm27qKBqDK/view?usp=sharing' target=_blank> <img width='350px' src="./README-Img//watch-video-button-01.png" /></a>

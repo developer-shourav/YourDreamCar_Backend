@@ -99,37 +99,35 @@ npm run start:dev
 - Endpoint: `/api/cars/:carId`
 - Method: `GET`
 
-`Response:` ![Get All Cars](./README-Img/use/getSpecificCar.png)  
+`Response:` ![Get Specific Cars](./README-Img/use/getSpecificCar.png)  
 
 ### 4. Update a Car
 - Endpoint: `/api/cars/:carId`
 - Method: `PUT`
 
-`Request:` ![Create A car Request](./README-Img/use/updateCarReq.png) 
+`Request:` ![Update Car Request](./README-Img/use/updateCarReq.png) 
 
-`Response:` ![Create A car Response](./README-Img/use/updateCarRes.png) 
+`Response:` ![Update CarResponse](./README-Img/use/updateCarRes.png) 
 
 ### 5. Delete a Car
 - Endpoint: `/api/cars/:carId`
 - Method: `DELETE`
 
-`Response:` ![Create A car Response](./README-Img/use/deleteCar.png) 
+`Response:` ![Delete A car Response](./README-Img/use/deleteCar.png) 
 
 ### 6. Order a Car
 - Endpoint: `/api/orders`
 - Method: `POST`
 
-`Request:` ![Create A car Request](./README-Img/use/createCarReq.png) 
+`Request:` ![Order A car Request](./README-Img/use/orderCarReq.png) 
 
-`Response:` ![Create A car Response](./README-Img/use/createCarRes.png) 
+`Response:` ![Order A car Response](./README-Img/use/orderCarRes.png) 
 
 ### 7. Calculate Revenue from Orders (Aggregation)
 - Endpoint: `/api/orders/revenue`
 - Method: `GET`
 
-`Request:` ![Create A car Request](./README-Img/use/createCarReq.png) 
-
-`Response:` ![Create A car Response](./README-Img/use/createCarRes.png) 
+`Response:` ![Get Revenue Response](./README-Img/use/revenue.png) 
 
 
 <a href='https://drive.google.com/file/d/1AcWz9tT3ehQerfPaZM-5T6Xm27qKBqDK/view?usp=sharing' target=_blank> <img width='350px' src="./README-Img//watch-video-button-01.png" /></a>

@@ -1,6 +1,6 @@
-import { Car } from '../car/car.modle';
+import { Car } from '../car/car.model';
 import { TOrder } from './order.interface';
-import { Order } from './order.modle';
+import { Order } from './order.model';
 
 /* ----------- Logic for Create a new order and manage inventory ----------- */
 const createNewOrder = async (orderData: TOrder) => {

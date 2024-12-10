@@ -1,5 +1,5 @@
 import { TCar } from './car.interface';
-import { Car } from './car.modle';
+import { Car } from './car.model';
 
 /* --------Logic For add a car to DataBase------ */
 const addNewCarIntoDB = async (carData: TCar) => {

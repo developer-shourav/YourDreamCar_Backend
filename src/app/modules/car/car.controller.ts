@@ -9,7 +9,7 @@ import { carServices } from './car.service';
 const addNewCar = async (req: Request, res: Response) => {
   try {
     /* ------Raw data of the request------ */
-    const { car: addNewCarData } = req.body;
+    const addNewCarData = req.body;
 
     /* -----Data Validation with zod------- */
     const carDataZodValidationResult = carValidationSchema.parse(addNewCarData);

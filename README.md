@@ -27,7 +27,6 @@ You can access the live application here: [https://2-your-dream-car-backend.verc
 - Create, Read, Update and Delete Cars
 - Create Order for a car
 - See Total Revenue
-- [Feature 4]
 - Error handling and validation using Zod
 
 ---

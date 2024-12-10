@@ -81,12 +81,61 @@ npm run start:dev
 
 ## How to Use the Application
 
-1. Create a Car
+### 1. Create a Car
 - Endpoint: `/api/cars`
 - Method: `POST`
 
 `Request:` ![Create A car Request](./README-Img/use/createCarReq.png) 
 
 `Response:` ![Create A car Response](./README-Img/use/createCarRes.png) 
+
+### 2. Get All Cars
+- Endpoint: `/api/cars`
+- Method: `GET`
+
+`Request:` ![Create A car Request](./README-Img/use/createCarReq.png) 
+
+`Response:` ![Create A car Response](./README-Img/use/createCarRes.png) 
+
+### 3. Get a Specific Car
+- Endpoint: `/api/cars/:carId`
+- Method: `GET`
+
+`Request:` ![Create A car Request](./README-Img/use/createCarReq.png) 
+
+`Response:` ![Create A car Response](./README-Img/use/createCarRes.png) 
+
+### 4. Update a Car
+- Endpoint: `/api/cars/:carId`
+- Method: `PUT`
+
+`Request:` ![Create A car Request](./README-Img/use/createCarReq.png) 
+
+`Response:` ![Create A car Response](./README-Img/use/createCarRes.png) 
+
+### 5. Delete a Car
+- Endpoint: `/api/cars/:carId`
+- Method: `DELETE`
+
+`Request:` ![Create A car Request](./README-Img/use/createCarReq.png) 
+
+`Response:` ![Create A car Response](./README-Img/use/createCarRes.png) 
+
+### 6. Order a Car
+- Endpoint: `/api/orders`
+- Method: `POST`
+
+`Request:` ![Create A car Request](./README-Img/use/createCarReq.png) 
+
+`Response:` ![Create A car Response](./README-Img/use/createCarRes.png) 
+
+### 7. Calculate Revenue from Orders (Aggregation)
+- Endpoint: `/api/orders/revenue`
+- Method: `GET`
+
+`Request:` ![Create A car Request](./README-Img/use/createCarReq.png) 
+
+`Response:` ![Create A car Response](./README-Img/use/createCarRes.png) 
+
 
 <a href='https://drive.google.com/file/d/1AcWz9tT3ehQerfPaZM-5T6Xm27qKBqDK/view?usp=sharing' target=_blank> <img width='350px' src="./README-Img//watch-video-button-01.png" /></a>

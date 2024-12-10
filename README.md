@@ -93,33 +93,27 @@ npm run start:dev
 - Endpoint: `/api/cars`
 - Method: `GET`
 
-`Request:` ![Create A car Request](./README-Img/use/createCarReq.png) 
-
-`Response:` ![Create A car Response](./README-Img/use/createCarRes.png) 
+`Response:` ![Get All Cars](./README-Img/use/getAllCars.png) 
 
 ### 3. Get a Specific Car
 - Endpoint: `/api/cars/:carId`
 - Method: `GET`
 
-`Request:` ![Create A car Request](./README-Img/use/createCarReq.png) 
-
-`Response:` ![Create A car Response](./README-Img/use/createCarRes.png) 
+`Response:` ![Get All Cars](./README-Img/use/getSpecificCar.png)  
 
 ### 4. Update a Car
 - Endpoint: `/api/cars/:carId`
 - Method: `PUT`
 
-`Request:` ![Create A car Request](./README-Img/use/createCarReq.png) 
+`Request:` ![Create A car Request](./README-Img/use/updateCarReq.png) 
 
-`Response:` ![Create A car Response](./README-Img/use/createCarRes.png) 
+`Response:` ![Create A car Response](./README-Img/use/updateCarRes.png) 
 
 ### 5. Delete a Car
 - Endpoint: `/api/cars/:carId`
 - Method: `DELETE`
 
-`Request:` ![Create A car Request](./README-Img/use/createCarReq.png) 
-
-`Response:` ![Create A car Response](./README-Img/use/createCarRes.png) 
+`Response:` ![Create A car Response](./README-Img/use/deleteCar.png) 
 
 ### 6. Order a Car
 - Endpoint: `/api/orders`
